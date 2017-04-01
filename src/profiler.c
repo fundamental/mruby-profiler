@@ -321,6 +321,8 @@ mrb_mruby_profiler_read(mrb_state *mrb, mrb_value self)
 
   res = mrb_ary_new_capa(mrb, 5);
   fp = fopen(fn, "r");
+  if(!fp)
+      return res;
   while (fgets(buf, 255, fp)) {
     int ai = mrb_gc_arena_save(mrb);
     mrb_value ele = mrb_str_new_cstr(mrb, buf);

@@ -96,7 +96,7 @@ module Profiler
     total_time = 0.0
     irep_num.times do |ino|
       fn = get_inst_info(ino, 0)[0]
-      if fn.is_a?(String) then
+      if(fn.is_a?(String) && fn != "(mirb)") then
         files[fn] ||= {}
         ilen(ino).times do |ioff|
           info   = get_inst_info(ino, ioff)
